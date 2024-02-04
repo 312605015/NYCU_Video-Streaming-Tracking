@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="grid-cols-8">
+					<h3 class="text-4xl text-center m-11">Live Streaming</h3>
+					<img src="{{ url_for('video_stream') }}" width="100%" id="image">
+
+					<script>
+						// add the event listener to the image to get the coordinates of the click
+						document.getElementById('image').addEventListener('click', function(event) {				
+							var imageRect = event.target.getBoundingClientRect();
+
+							var xRelativeToImage = event.clientX - imageRect.left;
+							var yRelativeToImage = event.clientY - imageRect.top;
+							// normalize coordinates to 0 <= x <= 1280, 0 <= y <= 720
+							xRelativeToImage = xRelativeToImage / imageRect.width * 1280;
+							yRelativeToImage = yRelativeToImage / imageRect.height * 720;
+							console.log(xRelativeToImage, yRelativeToImage);
+							var xhr = new XMLHttpRequest();
+							xhr.open('POST', '/handle_click', true);
+							xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+							xhr.send(JSON.stringify({x: xRelativeToImage, y: yRelativeToImage}));
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,1 @@
+python tools\demo_track.py webcam -f exps\example\mot\yolox_s_mix_det.py -c pretrained\bytetrack_s_mot17.pth.tar --save_result --fp16 --fuse --conf 0.25

@@ -1,0 +1,4 @@
+執行:python tools/demo_track2.py video --path C:/software/python/vst_hw3/ByteTrack/easy_9.mp4 -f exps/example/mot/yolox_x_mix_det.py -c pretrained/bytetrack_x_mot20.tar --fp16 --fuse --save_result --conf 0.75 --match_thresh 0.85
+
+mot17:
+python tools/demo_track.py video --path C:/software/python/vst_hw3/ByteTrack/hard_9.mp4 -f exps/example/mot/yolox_x_mix_det.py -c pretrained/bytetrack_x_mot17.pth.tar --fp16 --fuse --save_result --conf 0.75 --tsize 1280 --match_thresh 0.85
